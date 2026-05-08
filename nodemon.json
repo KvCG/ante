@@ -1,0 +1,6 @@
+{
+    "watch": ["src/server"],
+    "ext": "ts,json",
+    "exec": "npm run build:server:dev && node --enable-source-maps --inspect=9229 dist/server/server.cjs",
+    "ignore": ["dist/*", "node_modules/*", "src/client/*", "**/*.test.ts", "**/*.spec.ts"]
+}
