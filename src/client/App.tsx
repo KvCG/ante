@@ -1,35 +1,14 @@
-import { useFetch } from './hooks/useFetch'
-
 function App() {
-    const { data, loading, error, fetch } = useFetch<{ status: string }>()
-
-    const checkHealth = () => {
-        fetch('/api/status')
-    }
-
     return (
         <div className="app">
             <header className="app-header">
-                <h1>Baseline Project</h1>
+                <h1>Ante</h1>
                 <p>Full-stack TypeScript starter</p>
             </header>
 
             <main className="app-main">
                 <section className="card">
-                    <h2>API Health Check</h2>
-                    <button onClick={checkHealth} disabled={loading}>
-                        {loading ? 'Checking...' : 'Check API Status'}
-                    </button>
-                    
-                    {error && (
-                        <p className="error">{error}</p>
-                    )}
-                    
-                    {data && (
-                        <pre className="response">
-                            {JSON.stringify(data, null, 2)}
-                        </pre>
-                    )}
+                    <p>Loading…</p>
                 </section>
 
                 <section className="card">

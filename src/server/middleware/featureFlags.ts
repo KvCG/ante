@@ -12,8 +12,6 @@ import { FeatureDisabledError } from '../errors/customErrors'
  * - Add new features here as they're developed
  */
 const featureFlags: Record<string, () => boolean> = {
-    // Example features - customize for your project
-    exampleFeature: () => process.env.ENABLE_EXAMPLE_FEATURE === 'true',
     analytics: () => process.env.ENABLE_ANALYTICS === 'true',
     betaFeatures: () => process.env.ENABLE_BETA_FEATURES === 'true',
     
