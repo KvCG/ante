@@ -36,8 +36,13 @@ export default [
                 HTMLElement: 'readonly',
                 Response: 'readonly',
                 Request: 'readonly',
+                RequestInit: 'readonly',
                 URL: 'readonly',
                 URLSearchParams: 'readonly',
+                // Vitest globals
+                beforeEach: 'readonly',
+                afterAll: 'readonly',
+                vi: 'readonly',
             },
         },
         plugins: {
