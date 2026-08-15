@@ -38,6 +38,9 @@ export default [
                 Request: 'readonly',
                 URL: 'readonly',
                 URLSearchParams: 'readonly',
+                RequestInit: 'readonly',
+                Headers: 'readonly',
+                FormData: 'readonly',
             },
         },
         plugins: {
@@ -70,6 +73,21 @@ export default [
         settings: {
             react: {
                 version: 'detect',
+            },
+        },
+    },
+    {
+        files: ['tests/**/*.{ts,tsx}'],
+        languageOptions: {
+            globals: {
+                beforeAll: 'readonly',
+                afterAll: 'readonly',
+                beforeEach: 'readonly',
+                afterEach: 'readonly',
+                describe: 'readonly',
+                it: 'readonly',
+                expect: 'readonly',
+                vi: 'readonly',
             },
         },
     },

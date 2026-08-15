@@ -1,6 +1,6 @@
-# Baseline Project - Implementation Guide
+# Ante — Implementation Guide
 
-> A comprehensive guide to the architecture, patterns, and conventions used in this opinionated full-stack TypeScript baseline.
+> A comprehensive guide to the architecture, patterns, and conventions used in Ante.
 
 ---
 
@@ -14,7 +14,7 @@
 6. [Development Workflow](#development-workflow)
 7. [Testing Strategy](#testing-strategy)
 8. [Build & Deployment](#build--deployment)
-9. [Extending the Baseline](#extending-the-baseline)
+9. [Extending Ante](#extending-ante)
 
 ---
 
@@ -44,7 +44,7 @@
 ## Project Structure
 
 ```
-baseline-project/
+ante/
 ├── src/
 │   ├── client/                 # React frontend
 │   │   ├── hooks/              # Custom React hooks
@@ -114,16 +114,15 @@ baseline-project/
                           ▼
 ┌─────────────────────────────────────────────────────────┐
 │                   Route Handlers                         │
-│  ┌─────────────┐ ┌────────────────┐ ┌────────────────┐ │
-│  │healthRoutes │ │ exampleRoutes  │ │  yourRoutes    │ │
-│  └─────────────┘ └────────────────┘ └────────────────┘ │
-│         │                │                   │          │
-│         └────────────────┼───────────────────┘          │
-│                          │                              │
-│              ┌───────────▼───────────┐                  │
-│              │  Validation + Flags   │                  │
-│              │  (Zod + requireFeature)│                  │
-│              └───────────────────────┘                  │
+│      ┌─────────────┐      ┌────────────────┐             │
+│      │healthRoutes │      │  yourRoutes    │             │
+│      └──────┬──────┘      └───────┬────────┘             │
+│              \                    /                      │
+│               \                  /                       │
+│              ┌──────────▼──────────┐                     │
+│              │  Validation + Flags  │                    │
+│              │ (Zod + requireFeature)│                   │
+│              └───────────────────────┘                   │
 └─────────────────────────────────────────────────────────┘
                           │
                           ▼
@@ -438,7 +437,7 @@ The app detects deployment platform automatically:
 
 ---
 
-## Extending the Baseline
+## Extending Ante
 
 ### Adding a New API Endpoint
 

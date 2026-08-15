@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { z, ZodSchema, ZodError } from 'zod'
+import { ZodSchema, ZodError } from 'zod'
 import { ValidationError } from '../errors/customErrors'
 
 /**
