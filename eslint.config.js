@@ -39,16 +39,12 @@ export default [
                 RequestInit: 'readonly',
                 URL: 'readonly',
                 URLSearchParams: 'readonly',
-<<<<<<< HEAD
                 // Vitest globals
                 beforeEach: 'readonly',
                 afterAll: 'readonly',
                 vi: 'readonly',
-=======
-                RequestInit: 'readonly',
                 Headers: 'readonly',
                 FormData: 'readonly',
->>>>>>> 6c63dd5d14720972233858477661488573ae9bed
             },
         },
         plugins: {
@@ -65,13 +61,13 @@ export default [
             '@typescript-eslint/no-explicit-any': 'warn',
             '@typescript-eslint/explicit-function-return-type': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
-            
+
             // React rules
             'react/react-in-jsx-scope': 'off',
             'react/prop-types': 'off',
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'warn',
-            
+
             // General rules
             'no-console': 'off',
             'no-unused-vars': 'off', // Use TypeScript rule instead
@@ -100,12 +96,6 @@ export default [
         },
     },
     {
-        ignores: [
-            'dist/**',
-            'node_modules/**',
-            '*.config.js',
-            '*.config.ts',
-            'scripts/**',
-        ],
+        ignores: ['dist/**', 'node_modules/**', '*.config.js', '*.config.ts', 'scripts/**'],
     },
 ]
