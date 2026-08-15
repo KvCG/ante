@@ -39,10 +39,16 @@ export default [
                 RequestInit: 'readonly',
                 URL: 'readonly',
                 URLSearchParams: 'readonly',
+<<<<<<< HEAD
                 // Vitest globals
                 beforeEach: 'readonly',
                 afterAll: 'readonly',
                 vi: 'readonly',
+=======
+                RequestInit: 'readonly',
+                Headers: 'readonly',
+                FormData: 'readonly',
+>>>>>>> 6c63dd5d14720972233858477661488573ae9bed
             },
         },
         plugins: {
@@ -75,6 +81,21 @@ export default [
         settings: {
             react: {
                 version: 'detect',
+            },
+        },
+    },
+    {
+        files: ['tests/**/*.{ts,tsx}'],
+        languageOptions: {
+            globals: {
+                beforeAll: 'readonly',
+                afterAll: 'readonly',
+                beforeEach: 'readonly',
+                afterEach: 'readonly',
+                describe: 'readonly',
+                it: 'readonly',
+                expect: 'readonly',
+                vi: 'readonly',
             },
         },
     },
