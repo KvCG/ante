@@ -89,7 +89,7 @@ Simple async utilities:
 Environment-based feature flags:
 
 ```typescript
-router.get("/beta", requireFeature("betaFeatures"), handler);
+router.get('/beta', requireFeature('betaFeatures'), handler)
 ```
 
 ## Debugging
@@ -149,7 +149,18 @@ npm run test:watch
 
 # Coverage
 npm run test:client -- --coverage
+
+
 ```
+
+## Testing DB
+
+`npm test` runs client (jsdom) and server (node) suites. No external services required — the
+server test DB is in-memory SQLite (`better-sqlite3`), created fresh per test via
+`tests/server/db/testDb.ts`. See [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md#test-database)
+for the rationale.
+
+For architecture and patterns, see [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md).
 
 ## Deployment
 

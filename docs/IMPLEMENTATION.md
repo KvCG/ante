@@ -397,6 +397,34 @@ export const handlers = [
 ];
 ```
 
+### Test Database
+
+**Decision (2026-08-17):** SQLite in-memory via `better-sqlite3`, direct driver (no ORM). Chosen for
+zero network dependency, instant test runs, and no credentials to manage in CI — the trade-off
+accepted is dialect drift from the Postgres used in production (JSON handling, array types, some
+constraints differ). Revisit if a schema-level bug ever slips through tests only to surface against
+real Postgres.
+
+`tests/server/db/testDb.ts` exports `createTestDb()` / `closeTestDb()`. Each call creates a fully
+isolated in-memory database — no shared state between tests, no separate teardown/reset step needed
+beyond `closeTestDb()` in `afterEach`. This is a helper any server test imports directly, not a
+global setup file (`tests/setup.ts` stays client-only, wired to jsdom/testing-library via
+`vitest.client.config.ts` — the server config has no `setupFiles` entry).
+
+```typescript
+import { createTestDb, closeTestDb } from "../db/testDb";
+
+let db: TestDb;
+beforeEach(() => { db = createTestDb(); /* create tables */ });
+afterEach(() => { closeTestDb(db); });
+```
+
+**CI:** no changes needed. SQLite in-memory requires no external service — `test-server` in
+`.github/workflows/ci.yml` already runs `npm run test:server`, which is sufficient.
+
+Schema/migration tooling (for `Ante-S1-DB-Schema`'s actual tables) is a separate decision — this
+ticket only proves the DB round-trips inside a test, it doesn't pick an ORM or migration framework.
+
 ---
 
 ## Build & Deployment
