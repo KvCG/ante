@@ -36,8 +36,15 @@ export default [
                 HTMLElement: 'readonly',
                 Response: 'readonly',
                 Request: 'readonly',
+                RequestInit: 'readonly',
                 URL: 'readonly',
                 URLSearchParams: 'readonly',
+                // Vitest globals
+                beforeEach: 'readonly',
+                afterAll: 'readonly',
+                vi: 'readonly',
+                Headers: 'readonly',
+                FormData: 'readonly',
             },
         },
         plugins: {
@@ -54,13 +61,13 @@ export default [
             '@typescript-eslint/no-explicit-any': 'warn',
             '@typescript-eslint/explicit-function-return-type': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
-            
+
             // React rules
             'react/react-in-jsx-scope': 'off',
             'react/prop-types': 'off',
             'react-hooks/rules-of-hooks': 'error',
             'react-hooks/exhaustive-deps': 'warn',
-            
+
             // General rules
             'no-console': 'off',
             'no-unused-vars': 'off', // Use TypeScript rule instead
@@ -74,12 +81,21 @@ export default [
         },
     },
     {
-        ignores: [
-            'dist/**',
-            'node_modules/**',
-            '*.config.js',
-            '*.config.ts',
-            'scripts/**',
-        ],
+        files: ['tests/**/*.{ts,tsx}'],
+        languageOptions: {
+            globals: {
+                beforeAll: 'readonly',
+                afterAll: 'readonly',
+                beforeEach: 'readonly',
+                afterEach: 'readonly',
+                describe: 'readonly',
+                it: 'readonly',
+                expect: 'readonly',
+                vi: 'readonly',
+            },
+        },
+    },
+    {
+        ignores: ['dist/**', 'node_modules/**', '*.config.js', '*.config.ts', 'scripts/**'],
     },
 ]

@@ -1,17 +1,15 @@
-# Baseline Project
+# Ante
 
-An opinionated full-stack TypeScript starter template with battle-tested patterns for building production-ready applications.
+Social accountability PWA. Full-stack TypeScript — React 18 + Vite frontend / Express backend.
 
 ## Quick Start
 
 ```bash
-# Clone and setup
-git clone <repo-url> my-project
-cd my-project
+git clone <repo-url> ante
+cd ante
 npm install
 cp .env.example .env
 
-# Start development
 npm run dev
 ```
 
@@ -19,52 +17,20 @@ npm run dev
 
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:3000
-- Debug Port: 9229
 
-## Project Structure
+## Scripts
 
-```
-├── src/
-│   ├── client/           # React + Vite frontend
-│   │   ├── components/   # UI components
-│   │   ├── hooks/        # Custom React hooks
-│   │   ├── pages/        # Route-level components
-│   │   ├── services/     # API client + config
-│   │   └── styles/       # Global styles
-│   ├── server/           # Express + TypeScript backend
-│   │   ├── routes/       # HTTP endpoints
-│   │   ├── services/     # Business logic
-│   │   ├── middleware/   # Express middleware
-│   │   ├── utils/        # Utilities (resilience, http)
-│   │   ├── logging/      # Pino logging setup
-│   │   └── errors/       # Custom error classes
-│   ├── shared/           # Cross-platform code
-│   │   ├── types.ts      # Shared TypeScript interfaces
-│   │   └── runtimeEnv.ts # Environment detection
-├── tests/                # Test files (mirrors src/ structure)
-│   ├── client/           # Client tests
-│   ├── server/           # Server tests
-│   ├── fixtures/         # Test data
-│   ├── mocks/            # MSW handlers
-│   └── setup.ts          # Global test config
-├── scripts/              # Build scripts (esbuild)
-├── .github/workflows/    # CI/CD
-└── .vscode/              # Debug configurations
-```
-
-## Available Scripts
-
-| Script                | Description                           |
-| --------------------- | ------------------------------------- |
-| `npm run dev`         | Start frontend + backend concurrently |
-| `npm run dev:client`  | Start frontend only                   |
-| `npm run dev:server`  | Start backend only                    |
-| `npm run build`       | Build for production                  |
-| `npm run test`        | Run all tests                         |
-| `npm run test:client` | Run client tests                      |
-| `npm run test:server` | Run server tests                      |
-| `npm run type-check`  | TypeScript type checking              |
-| `npm run lint`        | Run ESLint                            |
+| Script                | Description                     |
+| --------------------- | ------------------------------- |
+| `npm run dev`         | Frontend + backend concurrently |
+| `npm run dev:client`  | Frontend only                   |
+| `npm run dev:server`  | Backend only                    |
+| `npm run build`       | Production build                |
+| `npm run test`        | Run all tests                   |
+| `npm run test:client` | Run client tests                |
+| `npm run test:server` | Run server tests                |
+| `npm run type-check`  | TypeScript type checking        |
+| `npm run lint`        | Run ESLint                      |
 
 ## Architecture Patterns
 

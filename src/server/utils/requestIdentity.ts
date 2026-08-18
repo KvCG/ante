@@ -9,7 +9,7 @@ export function extractRequestId(req: Request, res?: Response): string | undefin
         req?.headers?.['x-request-id'] as string ||
         res?.getHeader?.('x-request-id') as string ||
         req?.headers?.['x-correlation-id'] as string ||
-        (req as any)?.id ||
+        (req as { id?: string })?.id ||
         undefined
     )
 }

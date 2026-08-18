@@ -1,7 +1,7 @@
 {
-    "name": "baseline-project",
+    "name": "ante",
     "version": "1.0.0",
-    "description": "Opinionated full-stack TypeScript baseline project",
+    "description": "Ante — social accountability PWA",
     "type": "module",
     "scripts": {
         "dev": "concurrently --names \"FE,BE\" -c \"cyan,green\" \"npm run dev:client\" \"npm run dev:server\"",

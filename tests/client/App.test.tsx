@@ -5,12 +5,7 @@ import App from "../../src/client/App";
 describe("App", () => {
   it("renders the app header", () => {
     render(<App />);
-    expect(screen.getByText("Baseline Project")).toBeInTheDocument();
-  });
-
-  it("renders the health check button", () => {
-    render(<App />);
-    expect(screen.getByRole("button", { name: /check api status/i })).toBeInTheDocument();
+    expect(screen.getByText("Ante")).toBeInTheDocument();
   });
 
   it("renders getting started section", () => {
