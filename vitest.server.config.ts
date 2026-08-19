@@ -7,7 +7,7 @@ export default defineConfig({
     include: ["tests/server/**/*.{test,spec}.{ts,tsx}"],
     exclude: ["node_modules", "dist"],
     globals: true,
-    passWithNoTests: true,
+    passWithNoTests: false,
     coverage: {
       provider: "v8",
       reporter: ["text", "json", "html"],

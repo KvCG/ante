@@ -1,6 +1,19 @@
 # Project Agent Instructions (AGENTS.md)
 
-You are operating inside the **Baseline Project** — an opinionated full-stack TypeScript starter with React frontend and Express backend.
+You are operating inside **Ante** — a social accountability PWA (full-stack TypeScript, React frontend + Express backend).
+
+## Reference
+
+This repo is implemented from tickets tracked in Kevin's Obsidian vault, not in this repo:
+
+- Vault root: `D:\Documents\Obsidian Vault`
+- Project note: `3 - Projects\Ante.md`
+- Tickets: `3 - Projects\tickets\` — filtered to `project: "[[Ante]]"`
+- Kanban board: `5 - Resources\_Dashboards\Ante Board.md`
+- Slices / methodology artifacts: `5 - Resources\Knowledge Base\Ante *.md`
+
+Used by the global `work-ticket` prompt (`~/.pi/agent/prompts/work-ticket.md`) to auto-find the
+next ticket when invoked with no argument.
 
 ## Orientation
 
@@ -178,6 +191,35 @@ Custom error classes extend `AppError` in `src/server/errors/customErrors.ts`:
 | `npm run test`       | Run all tests                       |
 | `npm run type-check` | `tsc --noEmit`                      |
 | `npm run lint`       | ESLint                              |
+
+## Command Classification
+
+Getting this wrong means either blocking forever waiting on a command that never exits, or
+treating a server's startup log as a passing test.
+
+**One-shot — run to completion, always read the full output before concluding anything:**
+
+| Command | Purpose | Success signal |
+|---|---|---|
+| `npm test` / `npm run test:client` / `npm run test:server` | Run tests once | `vitest run` exits, pass/fail summary printed |
+| `npm run type-check` | `tsc --noEmit` | Exit 0, no output |
+| `npm run lint` / `npm run lint:fix` | ESLint | Exit code, violations listed if any |
+| `npm run build` / `build:client` / `build:server` | Production build | Exits, `dist/` populated |
+| `npm run validate-env` | Checks required env vars, applies defaults | Exits (also runs automatically as `predev`) |
+| `git log`, `git status`, `git diff` | Inspect repo state | Whatever it prints |
+
+**Long-running — never use these to verify anything:**
+
+| Command | Why it's unsafe as a check |
+|---|---|
+| `npm run dev` | Concurrent Vite (FE) + nodemon (BE) — neither exits on its own |
+| `npm run dev:client` | Vite dev server, never terminates |
+| `npm run dev:server` | nodemon watch mode, never terminates |
+| `npm start` | Runs the production server (`node dist/server/server.cjs`) — listens indefinitely |
+| `npm run test:watch` | vitest watch mode, never exits |
+
+To confirm a route actually works, hit it with `curl` against a running `dev`/`start` instance
+(one-shot) rather than trusting a clean boot log from the long-running command itself.
 
 ### Docker
 
